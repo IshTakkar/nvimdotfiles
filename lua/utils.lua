@@ -7,6 +7,8 @@ M.is_macos = M.os == 'Darwin'
 M.path_sep = M.is_windows and '\\' or '/'
 M.is_hubspot_machine = vim.loop.fs_stat(vim.env.HOME .. '/.hubspot')
 
+local bufferline = require('bufferline')
+
 function M.get_text_under_cursor() return vim.treesitter.get_node_text(vim.treesitter.get_node({ bufnr = 0 }), 0) end
 
 ---@param table1 {}
@@ -79,5 +81,16 @@ function M.file_exists(fname)
 end
 
 function M.open_file(file) vim.cmd('e ' .. file) end
+
+function M.toggle_buffer_numbers()
+  local current_option = vim.g.bufferline_numbers_visible or false
+  vim.g.bufferline_numbers_visible = not current_option
+
+  bufferline.setup({
+    options = {
+      numbers = current_option and 'none' or 'ordinal',
+    },
+  })
+end
 
 return M

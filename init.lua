@@ -1,4 +1,5 @@
 require('options')
+local utils = require('utils')
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -365,11 +366,11 @@ require('lazy').setup({
   -- setup args explained: https://github.com/folke/lazy.nvim?tab=readme-ov-file#-plugin-spec
 }, {})
 
+
 require('globals')
 require('hubspot-bender').setup()
 require('treesitter')
 require('lsp')
--- require("rust")
 require('completion')
 require('autocommands')
 require('theme').setup()
