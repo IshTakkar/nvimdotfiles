@@ -1,5 +1,4 @@
 require('options')
-local utils = require('utils')
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
