@@ -141,41 +141,58 @@ require('lazy').setup({
     config = function() require('fmt') end,
   },
   {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    init = function() vim.cmd.colorscheme('tokyonight-storm') end,
-  },
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     init = function()
-      local colors = {
-        blue = '#80a0ff',
-        cyan = '#79dac8',
-        black = '#080808',
-        white = '#c6c6c6',
-        red = '#ff5189',
-        violet = '#d183e8',
-        grey = '#303030',
+      local palette = {
+        -- Base colors
+        bg = '#1e222a',
+        fg = '#abb2bf',
+        black = '#282c34',
+        white = '#eae5ff',
+        line = '#3b3f47',
+
+        -- Grays
+        gray = '#494d55',
+        gray_fg = '#53575f',
+        light_gray = '#676b73',
+
+        -- Accent colors
+        red = '#ff6b5a',
+        green = '#98be65',
+        blue = '#61afef',
+        yellow = '#ECBE7B',
+        orange = '#ea9558',
+        purple = '#dc8ef3',
+        cyan = '#4db5bd',
+
+        -- Special shades
+        vibrant_green = '#a9cf76',
+        oni_violet = '#957FB8',
+        dark_purple = '#c678dd',
+        comments = '#6ea67c',
       }
+
       local theme = {
         normal = {
-          a = { fg = colors.black, bg = colors.violet },
-          b = { fg = colors.white, bg = colors.grey },
-          c = { fg = colors.black, bg = colors.black },
+          a = { fg = palette.black, bg = palette.purple },
+          b = { fg = palette.white, bg = palette.gray },
+          c = { fg = palette.black, bg = palette.black },
         },
-
-        insert = { a = { fg = colors.black, bg = colors.blue } },
-        visual = { a = { fg = colors.black, bg = colors.cyan } },
-        replace = { a = { fg = colors.black, bg = colors.red } },
-
+        insert = {
+          a = { fg = palette.black, bg = palette.blue },
+        },
+        visual = {
+          a = { fg = palette.black, bg = palette.cyan },
+        },
+        replace = {
+          a = { fg = palette.black, bg = palette.red },
+        },
         inactive = {
-          a = { fg = colors.white, bg = colors.black },
-          b = { fg = colors.white, bg = colors.black },
-          c = { fg = colors.black, bg = colors.black },
+          a = { fg = palette.white, bg = palette.black },
+          b = { fg = palette.white, bg = palette.black },
+          c = { fg = palette.black, bg = palette.black },
         },
       }
       require('lualine').setup({
@@ -364,7 +381,6 @@ require('lazy').setup({
   { import = 'custom.plugins' },
   -- setup args explained: https://github.com/folke/lazy.nvim?tab=readme-ov-file#-plugin-spec
 }, {})
-
 
 require('globals')
 require('hubspot-bender').setup()
