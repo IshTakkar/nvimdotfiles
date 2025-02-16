@@ -167,6 +167,8 @@ vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', { desc 
 vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', { desc = 'ToggleTerm horizontal split' })
 vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm size=80 direction=vertical<cr>', { desc = 'ToggleTerm vertical split' })
 
+vim.keymap.set('n', '<leader>nd', '<cmd>Noice dismiss<cr>', { desc = '[N]oice [D]ismiss' })
+
 local function trim(s)
   if not s then return 'print("invalid string")' end
   s = s:gsub('[\n\r]', '')
