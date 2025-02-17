@@ -188,6 +188,31 @@ end
 ---@return table<string, table<string, string>>
 function M.get_translations() return M.cache.translations end
 
+---@return nil
+function M.hover_translation()
+  local buf = vim.api.nvim_get_current_buf()
+  local path = M.get_app_or_lib_dir(buf)
+  if not path then
+    vim.notify('No app/lib directory found', vim.log.levels.WARN)
+    return
+  end
+
+  local translations = M.get_translations()[path]
+  if not translations then
+    vim.notify('No translations cached for this directory', vim.log.levels.WARN)
+    return
+  end
+
+  -- Get the translation key under the cursor.
+  local cword = vim.fn.expand('<cword>')
+  local translation = translations[cword]
+  if translation then
+    vim.lsp.util.open_floating_preview({ translation }, 'markdown', { border = 'rounded' })
+  else
+    vim.notify('No translation found for key: ' .. cword, vim.log.levels.INFO)
+  end
+end
+
 local is_hubspot_machine = vim.loop.fs_stat(vim.env.HOME .. '/.hubspot')
 function M.setup()
   if is_hubspot_machine then

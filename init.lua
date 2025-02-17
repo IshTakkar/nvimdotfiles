@@ -141,62 +141,67 @@ require('lazy').setup({
     config = function() require('fmt') end,
   },
   {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function() vim.cmd('colorscheme rose-pine') end,
+  },
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     init = function()
-      local palette = {
-        -- Base colors
-        bg = '#1e222a',
-        fg = '#abb2bf',
-        black = '#282c34',
-        white = '#eae5ff',
-        line = '#3b3f47',
-
-        -- Grays
-        gray = '#494d55',
-        gray_fg = '#53575f',
-        light_gray = '#676b73',
-
-        -- Accent colors
-        red = '#ff6b5a',
-        green = '#98be65',
-        blue = '#61afef',
-        yellow = '#ECBE7B',
-        orange = '#ea9558',
-        purple = '#dc8ef3',
-        cyan = '#4db5bd',
-
-        -- Special shades
-        vibrant_green = '#a9cf76',
-        oni_violet = '#957FB8',
-        dark_purple = '#c678dd',
-        comments = '#6ea67c',
-      }
-
-      local theme = {
-        normal = {
-          a = { fg = palette.black, bg = palette.purple },
-          b = { fg = palette.white, bg = palette.gray },
-          c = { fg = palette.black, bg = palette.black },
-        },
-        insert = {
-          a = { fg = palette.black, bg = palette.blue },
-        },
-        visual = {
-          a = { fg = palette.black, bg = palette.cyan },
-        },
-        replace = {
-          a = { fg = palette.black, bg = palette.red },
-        },
-        inactive = {
-          a = { fg = palette.white, bg = palette.black },
-          b = { fg = palette.white, bg = palette.black },
-          c = { fg = palette.black, bg = palette.black },
-        },
-      }
+      -- local palette = {
+      --   -- Base colors
+      --   bg = '#1e222a',
+      --   fg = '#abb2bf',
+      --   black = '#282c34',
+      --   white = '#eae5ff',
+      --   line = '#3b3f47',
+      --
+      --   -- Grays
+      --   gray = '#494d55',
+      --   gray_fg = '#53575f',
+      --   light_gray = '#676b73',
+      --
+      --   -- Accent colors
+      --   red = '#ff6b5a',
+      --   green = '#98be65',
+      --   blue = '#61afef',
+      --   yellow = '#ECBE7B',
+      --   orange = '#ea9558',
+      --   purple = '#dc8ef3',
+      --   cyan = '#4db5bd',
+      --
+      --   -- Special shades
+      --   vibrant_green = '#a9cf76',
+      --   oni_violet = '#957FB8',
+      --   dark_purple = '#c678dd',
+      --   comments = '#6ea67c',
+      -- }
+      --
+      -- local theme = {
+      --   normal = {
+      --     a = { fg = palette.black, bg = palette.purple },
+      --     b = { fg = palette.white, bg = palette.gray },
+      --     c = { fg = palette.black, bg = palette.black },
+      --   },
+      --   insert = {
+      --     a = { fg = palette.black, bg = palette.blue },
+      --   },
+      --   visual = {
+      --     a = { fg = palette.black, bg = palette.cyan },
+      --   },
+      --   replace = {
+      --     a = { fg = palette.black, bg = palette.red },
+      --   },
+      --   inactive = {
+      --     a = { fg = palette.white, bg = palette.black },
+      --     b = { fg = palette.white, bg = palette.black },
+      --     c = { fg = palette.black, bg = palette.black },
+      --   },
+      -- }
       require('lualine').setup({
-        theme,
+        -- theme,
         component_separators = '|',
         section_separators = { left = '', right = '' },
         sections = {
@@ -388,5 +393,5 @@ require('treesitter')
 require('lsp')
 require('completion')
 require('autocommands')
-require('theme').setup()
+-- require('theme').setup()
 require('mappings')

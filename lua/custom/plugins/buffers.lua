@@ -9,7 +9,7 @@ return {
         options = {
           numbers = 'buffer_id',
           show_close_icon = false,
-          separator_style = 'slant',
+          -- separator_style = 'slant',
           groups = {
             options = {
               toggle_hidden_on_enter = true,
@@ -56,7 +56,7 @@ return {
                 auto_close = false,
                 matcher = function(buf)
                   local fname = vim.api.nvim_buf_get_name(0)
-                  return fname:match('%.yaml') or fname:match('%.toml') or fname:match('%.json')
+                  return fname:match('%.yaml') or fname:match('%.toml') or fname:match('%.json') or fname:match('%.conf')
                 end,
                 separator = {
                   style = require('bufferline.groups').separator.tab,
